@@ -13,6 +13,10 @@ import java.util.Properties;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * @author Sebastian Weigelt
+ * 
+ */
 public class TimeoutWatchdogTest {
 
 	private static final Properties wdProps = ConfigManager.getConfiguration(TimeoutWatchdog.class);
@@ -33,6 +37,10 @@ public class TimeoutWatchdogTest {
 		towd.init();
 	}
 
+	/**
+	 * Tests whether the agent has added the term node type after the timeout
+	 * exceeded.
+	 */
 	@Test
 	public void testExec5000ms() {
 
@@ -49,6 +57,10 @@ public class TimeoutWatchdogTest {
 		assertTrue(graph.hasNodeType("TERM_SIGNAL_TYPE"));
 	}
 
+	/**
+	 * Tests whether the agent doesn't add the term node before the timeout is
+	 * exceeded.
+	 */
 	@Test
 	public void testExec5000msFail() {
 
