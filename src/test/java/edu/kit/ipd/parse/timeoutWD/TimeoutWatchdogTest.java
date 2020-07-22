@@ -76,4 +76,26 @@ public class TimeoutWatchdogTest {
 		towd.exec();
 		assertFalse(graph.hasNodeType("TERM_SIGNAL_TYPE"));
 	}
+
+	/**
+	 * Tests whether the agent has added the term node type after 5 runs and the
+	 * timeout exceeded.
+	 */
+	@Test
+	public void testMultExec5000ms() {
+
+		wdProps.setProperty("TIMEOUT_THRESHOLD", "5000");
+		for (int i = 0; i < 5; i++) {
+			towd.setGraph(graph);
+			towd.exec();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		towd.setGraph(graph);
+		towd.exec();
+		assertTrue(graph.hasNodeType("TERM_SIGNAL_TYPE"));
+	}
 }
