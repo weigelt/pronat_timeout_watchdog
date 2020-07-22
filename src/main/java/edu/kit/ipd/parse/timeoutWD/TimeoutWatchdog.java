@@ -1,6 +1,6 @@
 package edu.kit.ipd.parse.timeoutWD;
 
-import edu.kit.ipd.parse.luna.Luna;
+import edu.kit.ipd.parse.luna.AbstractLuna;
 import edu.kit.ipd.parse.luna.agent.AbstractAgent;
 import edu.kit.ipd.parse.luna.tools.ConfigManager;
 import org.kohsuke.MetaInfServices;
@@ -20,7 +20,7 @@ public class TimeoutWatchdog extends AbstractAgent {
 	private static final String ID = "timeoutWatchdog";
 	private static final Logger logger = LoggerFactory.getLogger(TimeoutWatchdog.class);
 	private static final Properties wdProps = ConfigManager.getConfiguration(TimeoutWatchdog.class);
-	private static final Properties lunaProps = ConfigManager.getConfiguration(Luna.class);
+	private static final Properties lunaProps = ConfigManager.getConfiguration(AbstractLuna.class);
 
 	private static final String PROP_TIMEOUT_THRESHOLD = "TIMEOUT_THRESHOLD";
 	private static final String PROP_TERM_SIGNAL_TYPE = "TERM_SIGNAL_TYPE";
