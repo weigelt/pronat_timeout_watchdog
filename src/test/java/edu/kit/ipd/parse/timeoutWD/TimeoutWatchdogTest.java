@@ -4,17 +4,16 @@ import edu.kit.ipd.parse.luna.Luna;
 import edu.kit.ipd.parse.luna.graph.IGraph;
 import edu.kit.ipd.parse.luna.graph.ParseGraph;
 import edu.kit.ipd.parse.luna.tools.ConfigManager;
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import java.util.Properties;
 
-@RunWith(JUnit4.class)
-public class TimeoutWatchdogTest extends TestCase {
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public class TimeoutWatchdogTest {
 
 	private static final Properties wdProps = ConfigManager.getConfiguration(TimeoutWatchdog.class);
 	private static final Properties lunaProps = ConfigManager.getConfiguration(Luna.class);
