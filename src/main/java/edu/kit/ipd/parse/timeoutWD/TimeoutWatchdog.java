@@ -2,6 +2,7 @@ package edu.kit.ipd.parse.timeoutWD;
 
 import edu.kit.ipd.parse.luna.AbstractLuna;
 import edu.kit.ipd.parse.luna.agent.AbstractAgent;
+import edu.kit.ipd.parse.luna.agent.AbstractWatchdog;
 import edu.kit.ipd.parse.luna.tools.ConfigManager;
 import org.kohsuke.MetaInfServices;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import java.util.Properties;
  */
 
 @MetaInfServices(AbstractAgent.class)
-public class TimeoutWatchdog extends AbstractAgent {
+public class TimeoutWatchdog extends AbstractWatchdog {
 
 	private static final String ID = "timeoutWatchdog";
 	private static final Logger logger = LoggerFactory.getLogger(TimeoutWatchdog.class);
