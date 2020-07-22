@@ -2,8 +2,6 @@ package edu.kit.ipd.parse.timeoutWD;
 
 import edu.kit.ipd.parse.luna.Luna;
 import edu.kit.ipd.parse.luna.agent.AbstractAgent;
-import edu.kit.ipd.parse.luna.graph.IArcType;
-import edu.kit.ipd.parse.luna.graph.INodeType;
 import edu.kit.ipd.parse.luna.tools.ConfigManager;
 import org.kohsuke.MetaInfServices;
 import org.slf4j.Logger;
@@ -32,12 +30,20 @@ public class TimeoutWatchdog extends AbstractAgent {
 
 	private long to_threshold;
 
+	/**
+	 * Initializes the agent. Simply sets the ID and fetches the timeout threshold
+	 * from the config file.
+	 */
 	@Override
 	public void init() {
 		setId(ID);
 		to_threshold = Long.parseLong(wdProps.getProperty(PROP_TIMEOUT_THRESHOLD));
 	}
 
+	/**
+	 * Executes the agent and checks whether the timeout threshold is exceeded. If
+	 * so, a term type is added to the graph to signal termination.
+	 */
 	@Override
 	protected void exec() {
 
