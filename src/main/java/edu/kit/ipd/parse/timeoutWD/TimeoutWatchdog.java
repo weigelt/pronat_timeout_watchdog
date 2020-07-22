@@ -26,7 +26,7 @@ public class TimeoutWatchdog extends AbstractAgent {
 	private static final String PROP_TERM_SIGNAL_TYPE = "TERM_SIGNAL_TYPE";
 
 	private long currTime = -1;
-	private long lastTime = -1;
+	private long firstTime = -1;
 
 	private long to_threshold;
 
@@ -48,17 +48,17 @@ public class TimeoutWatchdog extends AbstractAgent {
 	protected void exec() {
 
 		currTime = System.currentTimeMillis();
-
-		if (!(lastTime == -1) && checkTimeout()) {
-			graph.createNodeType(PROP_TERM_SIGNAL_TYPE);
+		if (firstTime == -1) {
+			firstTime = currTime;
 		}
 
-		lastTime = currTime;
-
+		if (checkTimeout()) {
+			graph.createNodeType(PROP_TERM_SIGNAL_TYPE);
+		}
 	}
 
 	private boolean checkTimeout() {
-		if (currTime - lastTime >= to_threshold) {
+		if (currTime - firstTime >= to_threshold) {
 			return true;
 		} else {
 			return false;
