@@ -30,6 +30,11 @@ public class TimeoutWatchdog extends AbstractWatchdog {
 	private long firstTime = -1;
 
 	private long to_threshold;
+	private String termSignalType;
+
+	public TimeoutWatchdog() {
+		setId(ID);
+	}
 
 	/**
 	 * Initializes the agent. Simply sets the ID and fetches the timeout threshold
@@ -37,8 +42,8 @@ public class TimeoutWatchdog extends AbstractWatchdog {
 	 */
 	@Override
 	public void init() {
-		setId(ID);
 		to_threshold = Long.parseLong(wdProps.getProperty(PROP_TIMEOUT_THRESHOLD));
+		termSignalType = lunaProps.getProperty(PROP_TERM_SIGNAL_TYPE);
 	}
 
 	/**
@@ -54,7 +59,7 @@ public class TimeoutWatchdog extends AbstractWatchdog {
 		}
 
 		if (checkTimeout()) {
-			graph.createNodeType(PROP_TERM_SIGNAL_TYPE);
+			graph.createNodeType(termSignalType);
 		}
 	}
 

@@ -54,7 +54,7 @@ public class TimeoutWatchdogTest {
 		}
 		towd.setGraph(graph);
 		towd.exec();
-		assertTrue(graph.hasNodeType("TERM_SIGNAL_TYPE"));
+		assertTrue(graph.hasNodeType("terminate"));
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class TimeoutWatchdogTest {
 		}
 		towd.setGraph(graph);
 		towd.exec();
-		assertFalse(graph.hasNodeType("TERM_SIGNAL_TYPE"));
+		assertFalse(graph.hasNodeType("terminate"));
 	}
 
 	/**
@@ -96,6 +96,6 @@ public class TimeoutWatchdogTest {
 		}
 		towd.setGraph(graph);
 		towd.exec();
-		assertTrue(graph.hasNodeType("TERM_SIGNAL_TYPE"));
+		assertTrue(graph.hasNodeType("terminate"));
 	}
 }
