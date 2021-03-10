@@ -1,6 +1,5 @@
 package edu.kit.ipd.parse.timeoutWD;
 
-import edu.kit.ipd.parse.luna.AbstractLuna;
 import edu.kit.ipd.parse.luna.agent.AbstractAgent;
 import edu.kit.ipd.parse.luna.agent.AbstractWatchdog;
 import edu.kit.ipd.parse.luna.tools.ConfigManager;
@@ -21,29 +20,25 @@ public class TimeoutWatchdog extends AbstractWatchdog {
 	private static final String ID = "timeoutWatchdog";
 	private static final Logger logger = LoggerFactory.getLogger(TimeoutWatchdog.class);
 	private static final Properties wdProps = ConfigManager.getConfiguration(TimeoutWatchdog.class);
-	private static final Properties lunaProps = ConfigManager.getConfiguration(AbstractLuna.class);
 
 	private static final String PROP_TIMEOUT_THRESHOLD = "TIMEOUT_THRESHOLD";
-	private static final String PROP_TERM_SIGNAL_TYPE = "TERM_SIGNAL_TYPE";
 
 	private long currTime = -1;
 	private long firstTime = -1;
 
 	private long to_threshold;
-	private String termSignalType;
 
 	public TimeoutWatchdog() {
 		setId(ID);
 	}
 
 	/**
-	 * Initializes the agent. Simply sets the ID and fetches the timeout threshold
-	 * from the config file.
+	 * Initializes the agent. Simply fetches the timeout threshold from the config
+	 * file.
 	 */
 	@Override
 	public void init() {
 		to_threshold = Long.parseLong(wdProps.getProperty(PROP_TIMEOUT_THRESHOLD));
-		termSignalType = lunaProps.getProperty(PROP_TERM_SIGNAL_TYPE);
 	}
 
 	/**
@@ -59,7 +54,9 @@ public class TimeoutWatchdog extends AbstractWatchdog {
 		}
 
 		if (checkTimeout()) {
-			graph.createNodeType(termSignalType);
+			logger.info("Creating timeout signal. Start was {} and now it is {}, which makes a diff of {}", firstTime, currTime,
+					(currTime - firstTime));
+			terminate();
 		}
 	}
 
