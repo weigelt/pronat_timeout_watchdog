@@ -1,4 +1,4 @@
-package edu.kit.ipd.parse.timeoutWD;
+package edu.kit.ipd.pronat.timeout_watchdog;
 
 import edu.kit.ipd.parse.luna.ILuna;
 import edu.kit.ipd.parse.luna.Luna;
@@ -7,8 +7,6 @@ import edu.kit.ipd.parse.luna.graph.IGraph;
 import edu.kit.ipd.parse.luna.graph.ParseGraph;
 import edu.kit.ipd.parse.luna.tools.ConfigManager;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Properties;

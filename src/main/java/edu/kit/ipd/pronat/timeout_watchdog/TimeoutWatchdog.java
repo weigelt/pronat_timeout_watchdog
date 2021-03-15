@@ -1,4 +1,4 @@
-package edu.kit.ipd.parse.timeoutWD;
+package edu.kit.ipd.pronat.timeout_watchdog;
 
 import edu.kit.ipd.parse.luna.agent.AbstractAgent;
 import edu.kit.ipd.parse.luna.agent.AbstractWatchdog;
