@@ -13,11 +13,18 @@
     <name>Timeout Watchdog</name>
     <repositories>
         <repository>
-            <id>ipdNexus-public-releases</id>
+            <id>ipdNexus-public-all</id>
             <name>IPD-Repository</name>
-            <url>http://bob.ipd.kit.edu/nexus/repository/maven-public-releases/</url>
+            <url>https://bob.ipd.kit.edu/nexus/repository/maven-public-all/</url>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>ipdNexus</id>
+            <name>ipdNexus</name>
+            <url>https://bob.ipd.kit.edu/nexus/repository/maven-public-all/</url>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
