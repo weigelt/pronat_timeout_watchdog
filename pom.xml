@@ -11,20 +11,6 @@
     <artifactId>timeout_watchdog</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <name>Timeout Watchdog</name>
-    <repositories>
-        <repository>
-            <id>ipdNexus-public-all</id>
-            <name>IPD-Repository</name>
-            <url>https://bob.ipd.kit.edu/nexus/repository/maven-public-all/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>ipdNexus</id>
-            <name>ipdNexus</name>
-            <url>https://bob.ipd.kit.edu/nexus/repository/maven-public-all/</url>
-        </pluginRepository>
-    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
